@@ -1,9 +1,9 @@
 blkdevinfo
 howlong
-install_appimage
-launch_gateway
+install-appimage
+launch-gateway
 nlog
-remove_appimage
-session_buddy_unzip
-session_buddy_zip
+remove-appimage
+session-buddy-unzip
+session-buddy-zip
 usbinfo
