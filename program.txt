@@ -1,4 +1,5 @@
 blkdevinfo
+cpumode
 howlong
 install-appimage
 launch-gateway
