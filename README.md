@@ -1,5 +1,5 @@
 # tools
-A collection of `bash` scripts for working with Linux systems.  They have been written for and tested on Linux Mint but should work on most Debian-based distros (and probably most others).  Each is intended to be instantiated within the `$PATH`, set as executable, and without the `.sh` extension.  The recommended location is `/usr/local/bin`.  Many (all?) of these rely upon library scripts expected to be in `/usr/local/lib`.
+A collection of `bash` scripts for working with Linux systems.  They have been written for and tested on Linux Mint but should work on most Debian-based distros (and probably most others).  Each is intended to be instantiated within the `$PATH`, set as executable, and without the `.sh` extension.  The recommended location is `/usr/local/bin` for most of these as they are user-level tools -- exceptions noted for others.  Many (all?) of these rely upon library scripts expected to be in `/usr/local/lib`.
 
 ## blkdevinfo.sh
 Usage: `blkdevinfo [drive]`
@@ -28,6 +28,8 @@ NOTE: This is work-in- progress as of 2025-11-11.
 Usage: `dkms-rebuild`
 
 Rebuild the DKMS modules for the current kernel.  This was constructed to address an issue manifesting on Ubuntu-based systems as of the 6.8.0-50 and 6.11.0-28 kernels.  The issue is that the DKMS modules are not being built and included in the `initramfs`.  Previously, I'd built and used the `initramfs_nvidia_fix` to address this as it had only manifested with Nvidia modules.  Recently, however, it was happening with other modules (virtuabox).  This script goes through the process of cleaning up the DKSM files for a module version, building it to a specified (current?) version, and then updating initramfs.
+
+This should be in `/usr/local/sbin` as it is a sysadmin tool.
 
 ## howlong.sh
 Usage: `howlong <program_name> [<user>]`
