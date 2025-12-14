@@ -129,6 +129,12 @@ done
 
 if [ -z $kernel ]; then
   kernel=$(uname -r)
+  printx "This will rebuild the DKMS module for the current kernel ($kernel)."
+  readx "Is that the intent ? [Y/n]" yn
+  if [[ $yn == "n" || $yn == "N" ]]; then
+    echo "Exiting..."
+    exit
+  fi
 fi
 
 # echo "kernel=$kernel"
