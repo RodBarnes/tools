@@ -97,8 +97,8 @@ build_module() {
 # --------------------
 
 # Get the arguments
-arg_short=h
-arg_long=help
+arg_short=k:h
+arg_long=kernel:,help
 arg_opts=$(getopt --options "$arg_short" --long "$arg_long" --name "$0" -- "$@")
 if [ $? != 0 ]; then
   show_syntax
