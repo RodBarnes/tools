@@ -34,14 +34,15 @@ fi
 
 # make sure we have root's power
 if [ $UID -ne 0 ]; then
-    echo 'Script must be executed by "root" or prefixed with "sudo".'
+  echo 'Script must be executed by "root" or with "sudo".'
+  exit
 fi
 
 # get & set actions
 case "$1" in
-    performance)    setcpumode performance; exit 0      ;;
-    powersave)      setcpumode powersave; exit 0        ;;
-    current|get)    getcpumode; exit 0                  ;;
-    help)           show_usage                          ;;
-    *)              echo "Try: $0 help"                 ;;
+  performance)    setcpumode performance; exit 0      ;;
+  powersave)      setcpumode powersave; exit 0        ;;
+  current|get)    getcpumode; exit 0                  ;;
+  help)           show_usage                          ;;
+  *)              echo "Try: $0 help"                 ;;
 esac
