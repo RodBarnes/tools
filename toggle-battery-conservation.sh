@@ -8,8 +8,9 @@
 source /usr/local/lib/display.sh
 
 show_syntax() {
-  echo "Syntax: $(basename $0) [-d|--default]"
+  echo "Syntax: $(basename $0) [-d|--default] [-h|--help]"
   echo "Where:  [-d|--default] will change the default value which is read at boot."
+  echo "        [-h|--help] show the syntax."
   echo "        Without this flag, the change is only for the current session."
   exit
 }
