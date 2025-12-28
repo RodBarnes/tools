@@ -12,7 +12,7 @@ show_syntax() {
   echo "Where:  [-d|--default] will change the default value which is read at boot."
   echo "        [-s|--show] display the current state."
   echo "        [-h|--help] show the syntax."
-  echo "        Without this flag, the change is only for the current session."
+  echo "        With no options, it toggles the state for the current session."
   exit
 }
 
