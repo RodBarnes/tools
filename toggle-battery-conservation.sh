@@ -10,6 +10,7 @@ source /usr/local/lib/display.sh
 show_syntax() {
   echo "Syntax: $(basename $0) [-d|--default] [-h|--help]"
   echo "Where:  [-d|--default] will change the default value which is read at boot."
+  echo "        [-s|--show] display the current state."
   echo "        [-h|--help] show the syntax."
   echo "        Without this flag, the change is only for the current session."
   exit
@@ -20,8 +21,8 @@ show_syntax() {
 # --------------------
 
 # Get the arguments
-arg_short=dh
-arg_long=default,help
+arg_short=dsh
+arg_long=default,show,help
 arg_opts=$(getopt --options "$arg_short" --long "$arg_long" --name "$0" -- "$@")
 if [ $? != 0 ]; then
   show_syntax
@@ -33,6 +34,10 @@ while true; do
   case "$1" in
     -d|--default)
       setdef=true
+      shift 1
+      ;;
+    -s|--show)
+      show=true
       shift 1
       ;;
     -h|--help)
@@ -57,6 +62,12 @@ then
 fi
 
 states=("disabled" "enabled")
+
+if [ ! -z $show ]; then
+  curstate=$(sudo tlp-stat -b | grep conservation_mode | cut -d' ' -f3)
+  echo "Power conservation is ${states[$curstate]}"
+  exit
+fi
 
 if [ $setdef ]; then
   # Change the default; this will last through a reboot
