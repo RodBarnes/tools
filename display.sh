@@ -28,7 +28,7 @@ printx() {
 # Read using color
 readx() {
   printf "${YELLOW}$1${NOCOLOR}" >&2
-  read $2
+  read -r $2
 }
 
 # Echo within a function to prevent it being part of the output
