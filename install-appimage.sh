@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-#v1.01
-
-# This has been tested on Fedora 39 Cinnamon and works well.
-# It should work under Ubuntu and downstream with little or no changes.
 
 source /usr/local/lib/display.sh
 

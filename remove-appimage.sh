@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-#v1.1
-
-# This has been tested on LinxuMint and works well.
-# It should work under Fedora and downstream debian-based with little or no changes.
 
 source /usr/local/lib/display.sh
 
@@ -36,7 +32,7 @@ appimage=$(ls *.AppImage)
 printx "This entirely removes the command '$command' and '$appimage' from the system."
 while true; do
 read -p "Do you want to proceed? (yes/no) " yn
-case $yn in 
+case $yn in
 	yes ) echo ok, we will proceed;
         printx "Proceeding to remove the application..."
 		break;;
@@ -47,10 +43,11 @@ esac
 done
 
 sudo ./$appimage --appimage-extract 1> /dev/null
+sudo chmod 777 squashfs-root
 cd squashfs-root
-desktopfile=$(ls *.desktop)
+desktopfile=$(ls ./squashfs-root/*.desktop)
 cd /opt
-sudo rm /usr/local/share/applications/$desktopfile
+sudo rm /usr/local/share/applications/$desktopfile.desktop
 sudo rm /usr/local/bin/$command
 sudo rm -rf /opt/$command
 sudo update-desktop-database
