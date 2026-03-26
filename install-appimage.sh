@@ -55,6 +55,7 @@ sudo cp ./squashfs-root/.DirIcon .
 desktoppath=$(ls ./squashfs-root/*.desktop)
 sudo sed -i "s|Exec=.*|Exec=$command|g" $desktoppath
 sudo sed -i "s|Icon=.*|Icon=/opt/$command/.DirIcon|g" $desktoppath
+sudo sed -i "s|^Type=.*|&\nMimeType=x-scheme-handler/joplin|" $desktoppath
 sudo desktop-file-install --dir=/usr/local/share/applications $desktoppath
 sudo update-desktop-database
 sudo rm -rf ./squashfs-root
