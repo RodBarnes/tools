@@ -8,11 +8,11 @@ TARGET="${TARGET%%.*}"
 
 case "$TARGET" in
   ardor)  PROFILE="ardor" ;;
+  bard)   PROFILE="bard" ;;
   boss)   PROFILE="boss"  ;;
   brawn)  PROFILE="brawn" ;;
   deft)   PROFILE="deft" ;;
   happy)  PROFILE="happy" ;;
-  bard)   PROFILE="bard" ;;
   mite)   PROFILE="mite" ;;
   shrek)  PROFILE="shrek" ;;
   *)      PROFILE="Default" ;;
