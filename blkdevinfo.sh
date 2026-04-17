@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 # Show info for all non-removable block devices; aka drives
 
 source /usr/local/lib/display.sh

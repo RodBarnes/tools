@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 # This is a convenience script to address an issue that periodically happens when a
 # new kernel is received.  Sometimes, the nvidia-related module files aren't uncompressed
 # and, thus, do not get included in the initramfs when it is built. Lately, the dkms files
@@ -55,7 +57,7 @@ if [ ! -d "/usr/lib/modules/$kernel/updates/dkms" ]; then
     selected=${options[0]}
   else
     # Remove any duplicates in the list
-    options=($(printf '%s\n' "${drivers[@]}" | sort -u))   
+    options=($(printf '%s\n' "${drivers[@]}" | sort -u))
 
     count="${#options[@]}"
     ((count++))

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 # Names for terminal color codes for use with printx & readx
 
 NOCOLOR='\033[0m' # No Color

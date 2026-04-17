@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VERSION="20260416"
+
 # Usage
 # nlog <dir>
 
@@ -9,7 +11,7 @@ show_syntax() {
   echo "Syntax: $(basename $0) <directory>"
   echo "Where:  <directory> is the name of the location where the log should be stored"
   echo "        This is intended to be used as a startup application."
-  exit    
+  exit
 }
 
 # --------------------
@@ -43,7 +45,7 @@ if [[ "$line" == *"member=Notify"* ]]; then
     # Capture app name, icon, title, or start capturing body
     if [[ "$line" == *"string \""* ]]; then
       value=$(echo "$line" | sed 's/^.*string "\(.*\)"/\1/')
-      
+
       if [ -z "$app_name" ]; then
         app_name="$value"
       elif [ -z "$icon" ]; then

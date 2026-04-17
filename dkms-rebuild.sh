@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 # This script was built from a conversation with Grok (https://grok.com/c/3d149a35-ac28-4ba2-aa5c-855ab9bf2dde)
 # on the issue around DKMS files not being included as part of the kernel build.  I experienced this with
 # 6.8.0-50 and later with 6.11.0-28.  The conversation makes clear this is not unique to my systems and is a knonw

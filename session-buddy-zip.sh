@@ -3,6 +3,8 @@
 # This script assumed it is run from ~/Downloads since that is the logical
 # for where the archive will be located.  Especially if using LocalSend.
 
+VERSION="20260416"
+
 # Get the date and create a filename that appends that date
 dt=$(date '+%Y%m%d_%H%M%S');
 filename="sessionbuddy_${dt}.zip"

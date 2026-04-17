@@ -3,6 +3,8 @@
 # Given the name of a VM, check if it running.
 # If not, start it; if it is, shutdown
 
+VERSION="20260416"
+
 source /usr/local/lib/display.sh
 
 show_syntax() {

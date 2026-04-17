@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # /usr/local/bin/ssh.sh — Flash-proof version for GNOME Terminal 3.52/VTE 0.76
 
+VERSION="20260416"
+
 TARGET="${1##*@}"
 TARGET="${TARGET%%.*}"
 
@@ -10,7 +12,7 @@ case "$TARGET" in
   brawn)  PROFILE="brawn" ;;
   deft)   PROFILE="deft" ;;
   happy)  PROFILE="happy" ;;
-  media)  PROFILE="media" ;;
+  bard)   PROFILE="bard" ;;
   mite)   PROFILE="mite" ;;
   shrek)  PROFILE="shrek" ;;
   *)      PROFILE="Default" ;;

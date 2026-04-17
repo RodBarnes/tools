@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 # Provided the name of the device file-system; e.g., Storage
 # return the device id; e.g., sdxn
 
@@ -21,5 +23,5 @@ devname=$1
 
 devpath=$(lsblk -l | grep $devname)
 tmp=(${devpath/ })
-devid=${tmp[0]} 
+devid=${tmp[0]}
 echo $devid

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 # Open a web page to the gateway to the current connection.
 # This was written to get around how, too often, the "Login" page never auto-displays
 # when connecting to a public network that requires accepting a license, logging in,

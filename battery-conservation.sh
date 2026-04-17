@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 # This is designed to run on Lenovo IdeaPads which support a limited, binary
 # battery conservation mode of either on (stop charging at 60%) or off (allow full charging).
 # NOTE: ThinkPads support an increased capability that allows specifying the charging stop and start thresholds.

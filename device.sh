@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 # Library for managing devices
 
 mount_device_at_path() {

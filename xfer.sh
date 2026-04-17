@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 # Use rsync to ship a copy of files from one location to another
 # so that the destiination ends up being an exact copy of the source
 

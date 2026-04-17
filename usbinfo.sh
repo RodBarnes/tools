@@ -3,6 +3,8 @@
 # Given an identifying string for which to search the output of lsusb,
 # return the full name of the device and the USB version
 
+VERSION="20260416"
+
 source /usr/local/lib/display.sh
 
 show_syntax() {

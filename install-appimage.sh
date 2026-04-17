@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260416"
+
 source /usr/local/lib/display.sh
 
 show_syntax() {
