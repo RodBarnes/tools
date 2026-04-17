@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Git pre-commit hook for ts-tools
+# Automatically updates VERSION in any staged script file
+# that contains a VERSION="YYYYMMDD" line.
+#
+# Install: cp git_hooks_pre-commit .git/hooks/pre-commit
+#          chmod +x .git/hooks/pre-commit
+
+today=$(date +%Y%m%d)
+
+while IFS= read -r file; do
+  if [[ -f "$file" ]] && grep -q '^VERSION="[0-9]\{8\}"' "$file"; then
+    sed -i "s/^VERSION=\"[0-9]\{8\}\"/VERSION=\"$today\"/" "$file"
+    git add "$file"
+  fi
+done < <(git diff --cached --name-only)
