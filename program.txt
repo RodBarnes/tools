@@ -1,9 +1,0 @@
-blkdevinfo
-howlong
-install-appimage
-launch-gateway
-nlog
-remove-appimage
-session-buddy-unzip
-session-buddy-zip
-usbinfo

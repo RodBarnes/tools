@@ -1,3 +1,0 @@
-blkdevinfo
-howlong
-usbinfo
