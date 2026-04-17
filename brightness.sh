@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="20260415"
+
 # Designed for getting/setting the brightness from the command-line
 
 if ls /sys/class/backlight/*/brightness &>/dev/null; then
