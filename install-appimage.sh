@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
+#v1.01
 
-VERSION="20260416"
+# This has been tested on Fedora 39 Cinnamon and works well.
+# It should work under Ubuntu and downstream with little or no changes.
 
 source /usr/local/lib/display.sh
+
+VERSION="20260501"
 
 show_syntax() {
   echo "Syntax: $(basename $0) <command> <appimage>"
@@ -28,21 +32,20 @@ fi
 
 command=$1
 filename=$2
-user=$(whoami)
 
 # Strip any extension that may've been provided
 appname=$(basename $filename .AppImage)
 
 # Confirm the AppImage can be found using the supplied filename
-if [ ! -f /home/$user/Downloads/$appname.AppImage ]; then
-  printx "Unable to locate specified '$filename' or '$filename.AppImage' in '/home/$user/Downloads/'"
+if [ ! -f $filename ]; then
+  printx "Unable to locate specified '$filename' or '$filename.AppImage'"
   exit
 fi
 
 # Create the folder, move the AppImage, make it executable, and create the command
 printx "Installing app..."
 sudo mkdir /opt/$command
-sudo mv /home/$user/Downloads/$appname.AppImage /opt/$command
+sudo cp $filename /opt/$command
 sudo chmod +x /opt/$command/$appname.AppImage
 sudo chown root /opt/$command/$appname.AppImage
 sudo chgrp root /opt/$command/$appname.AppImage
@@ -57,10 +60,8 @@ sudo cp ./squashfs-root/.DirIcon .
 desktoppath=$(ls ./squashfs-root/*.desktop)
 sudo sed -i "s|Exec=.*|Exec=$command|g" $desktoppath
 sudo sed -i "s|Icon=.*|Icon=/opt/$command/.DirIcon|g" $desktoppath
-sudo sed -i "s|^Type=.*|&\nMimeType=x-scheme-handler/joplin|" $desktoppath
 sudo desktop-file-install --dir=/usr/local/share/applications $desktoppath
 sudo update-desktop-database
 sudo rm -rf ./squashfs-root
 
 printx "Installation complete"
-
