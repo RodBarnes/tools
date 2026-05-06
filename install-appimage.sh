@@ -44,12 +44,13 @@ fi
 
 # Create the folder, move the AppImage, make it executable, and create the command
 printx "Installing app..."
-sudo mkdir /opt/$command
+sudo mkdir -p /opt/$command
+sudo rm -f /opt/$command/*.AppImage
 sudo cp $filename /opt/$command
 sudo chmod +x /opt/$command/$appname.AppImage
 sudo chown root /opt/$command/$appname.AppImage
 sudo chgrp root /opt/$command/$appname.AppImage
-sudo ln -s /opt/$command/$appname.AppImage /usr/local/bin/$command
+sudo ln -sf /opt/$command/$appname.AppImage /usr/local/bin/$command
 
 # Install in menu
 printx "Installing in menu..."
