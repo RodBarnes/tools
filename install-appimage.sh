@@ -6,7 +6,7 @@
 
 source /usr/local/lib/display.sh
 
-VERSION="20260501"
+VERSION="20260505"
 
 show_syntax() {
   echo "Syntax: $(basename $0) <command> <appimage>"
@@ -38,7 +38,7 @@ appname=$(basename $filename .AppImage)
 
 # Confirm the AppImage can be found using the supplied filename
 if [ ! -f $filename ]; then
-  printx "Unable to locate specified '$filename' or '$filename.AppImage'"
+  printx "Unable to locate specified '$filename'"
   exit
 fi
 
