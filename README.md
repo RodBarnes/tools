@@ -85,8 +85,6 @@ Usage: `show_volume_device <device_label>`
 
 Show the full device path for the device with the specified label.  This is similar to `devid.sh`
 
-## sysinfo.sh
-
 ## usbinfo.sh
 Usage: `usbinfo`
 
