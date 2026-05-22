@@ -1,16 +1,25 @@
 # tools
 A collection of `bash` scripts for working with Linux systems.  They have been written for and tested on Linux Mint but should work on most Debian-based distros (and probably most others).  Each is intended to be instantiated within the `$PATH`, set as executable, and without the `.sh` extension.  The recommended location is `/usr/local/bin` for most of these as they are user-level tools -- exceptions noted for others.  Many (all?) of these rely upon library scripts expected to be in `/usr/local/lib`.
 
+## appimage-install.sh
+Usage: `appimage-install <name> <path_to_appimage>`
+
+Installs the AppImage under `/opt` and adds an entry to the menu based upon the information and icon found in the AppImage.
+
+## appimage-remove.sh
+Usage: `appimage-remove <name>`
+
+Uninstall an AppImage matching `name` that was installed using `appimage-install`.  This also removes the menu entry that was created.
+
+## appimage-reset.sh
+Usage: `appimage-reset <name>`
+
+Resets the AppImage matching `name` that was installed using `appimage-install`.  This removes the menu entry that was created and reinstalls the AppImage.
+
 ## blkdevinfo.sh
 Usage: `blkdevinfo [drive]`
 
 Uses `smartctl` to display information about the non-removable drives found on the system.  If no drive is specified, it iterates all the drives.
-
-## display.sh
-A library that sets up some colors and functions for text.  It is expected to be placed in `/usr/local/lib`.
-
-## device.sh
-A library that includes functions for managing devices.  It is expected to be placed in `/usr/local/lib`.
 
 ## cpumode.sh
 Usage: `sudo cpumode [powersave|performance|current]`
@@ -18,6 +27,12 @@ Usage: `sudo cpumode [powersave|performance|current]`
 Sets or shows the current cpumode.
 
 This should be in `/usr/local/sbin` as it is a sysadmin tool.
+
+## device.sh
+A library that includes functions for managing devices.  It is expected to be placed in `/usr/local/lib`.
+
+## display.sh
+A library that sets up some colors and functions for text.  It is expected to be placed in `/usr/local/lib`.
 
 ## devid.sh
 Usage: `devid <device_label>`
@@ -45,21 +60,6 @@ Sometimes, when a new kernel is received, the nvidia-related DKMS modules are mi
 
 This tool uncompresses those files and updates initramfs to correct this.  This should be in `/usr/local/sbin` as it is a sysadmin tool.
 
-## appimage-install.sh
-Usage: `appimage-install <name> <path_to_appimage>`
-
-Installs the AppImage under `/opt` and adds an entry to the menu based upon the information and icon found in the AppImage.
-
-## appimage-remove.sh
-Usage: `appimage-remove <name>`
-
-Uninstall an AppImage matching `name` that was installed using `appimage-install`.  This also removes the menu entry that was created.
-
-## appimage-reset.sh
-Usage: `appimage-reset <name>`
-
-Resets the AppImage matching `name` that was installed using `appimage-install`.  This removes the menu entry that was created and reinstalls the AppImage.
-
 ## launch_gateway.sh
 Usage: `nohup launch_gateway {browser} 2\> /dev/null`
 
@@ -73,7 +73,7 @@ Purpose: On LinuxMint, notifications are displayed but not logged.  If they aren
 ## session-buddy-zip & session-buddy-unzip
 Usage: `session-buddy-zip <name>` or `session-buddy-unzip <name>`
 
-Zip or unzip the contents of the Session Buddy extension for copying to another system using the specified name.
+Paired tools to zip or unzip the contents of the Session Buddy extension for copying to another system using the specified name.
 
 ## show_crontab_users.sh
 Usage: `show_crontab_users`
