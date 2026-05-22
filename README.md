@@ -68,7 +68,7 @@ This script can be used to bring up the gateway for logging in when that is requ
 ## nlog.sh
 Usage: `nlog <path_to_log>`
 
-Purpose: On LinuxMint, notifications are displayed but not logged.  If they aren't seen, there is no way to find out what was the notification. This captures the output into a log that is cleared when the process is started.
+On LinuxMint, notifications are displayed but not logged.  If they aren't seen, there is no way to find out what was the notification. This captures the output into a log that is cleared when the process is started.
 
 ## session-buddy-zip & session-buddy-unzip
 Usage: `session-buddy-zip <name>` or `session-buddy-unzip <name>`
