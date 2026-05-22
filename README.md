@@ -45,10 +45,20 @@ Sometimes, when a new kernel is received, the nvidia-related DKMS modules are mi
 
 This tool uncompresses those files and updates initramfs to correct this.  This should be in `/usr/local/sbin` as it is a sysadmin tool.
 
-## install_appimage.sh
-Usage: `install_appimage <name> <path_to_appimage>`
+## appimage-install.sh
+Usage: `appimage-install <name> <path_to_appimage>`
 
 Installs the AppImage under `/opt` and adds an entry to the menu based upon the information and icon found in the AppImage.
+
+## appimage-remove.sh
+Usage: `appimage-remove <name>`
+
+Uninstall an AppImage matching `name` that was installed using `appimage-install`.  This also removes the menu entry that was created.
+
+## appimage-reset.sh
+Usage: `appimage-reset <name>`
+
+Resets the AppImage matching `name` that was installed using `appimage-install`.  This removes the menu entry that was created and reinstalls the AppImage.
 
 ## launch_gateway.sh
 Usage: `nohup launch_gateway {browser} 2\> /dev/null`
@@ -60,10 +70,10 @@ Usage: `nlog <path_to_log>`
 
 Purpose: On LinuxMint, notifications are displayed but not logged.  If they aren't seen, there is no way to find out what was the notification. This captures the output into a log that is cleared when the process is started.
 
-## remove_appimage.sh
-Usage: `remove_appimage <name>`
+## session-buddy-zip & session-buddy-unzip
+Usage: `session-buddy-zip <name>` or `session-buddy-unzip <name>`
 
-Uninstall an AppImage matching `name` that was installed using `install_appimage`.  This also removes the menu entry that was created.
+Zip or unzip the contents of the Session Buddy extension for copying to another system using the specified name.
 
 ## show_crontab_users.sh
 Usage: `show_crontab_users`

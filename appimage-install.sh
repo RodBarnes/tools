@@ -6,7 +6,7 @@
 
 source /usr/local/lib/display.sh
 
-VERSION="20260505"
+VERSION="20260521"
 
 show_syntax() {
   echo "Syntax: $(basename $0) <command> <appimage>"

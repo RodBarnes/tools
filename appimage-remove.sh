@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION="20260416"
+VERSION="20260521"
 
 source /usr/local/lib/display.sh
 
