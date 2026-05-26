@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Unzstd DKMS kernel modules and update initramfs
 
+VERSION="20260526"
+
 set -e
 
 KERNEL=${1:-$(uname -r)}
