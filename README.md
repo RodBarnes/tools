@@ -71,6 +71,15 @@ Sometimes, when a new kernel is received, the nvidia-related DKMS modules are mi
 
 This tool uncompresses those files and updates initramfs to correct this.  This should be in `/usr/local/sbin` as it is a sysadmin tool.
 
+## kernel-cleanup.sh
+Usage: `sudo kernel-cleanup [--run]`
+
+Identifies and removes orphaned kernel artifacts left behind after kernel upgrades or failed removals.  The authoritative list of kernels to retain is derived from `dpkg` (fully installed `ii`-status `linux-image-*` packages) plus the currently running kernel.  Anything not on that list is a candidate for removal.
+
+By default the script runs in dry-run mode, displaying candidates grouped by kernel version with the source of each artifact tagged as `[apt]`, `[mod]`, or `[boot]`.  Pass `--run` to execute the cleanup: purging residual apt package fragments (`rc`-status), removing orphaned directories under `/usr/lib/modules/`, and deleting leftover files in `/boot/` (including `.dpkg-bak` and `.new` artifacts).  Files in `/boot/` that are targets of the `vmlinuz.old` or `initrd.img.old` symlinks are protected from removal.
+
+This should be in `/usr/local/sbin` as it is a sysadmin tool.
+
 ## launch_gateway.sh
 Usage: `nohup launch_gateway {browser} 2\> /dev/null`
 
