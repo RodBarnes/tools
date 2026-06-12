@@ -40,13 +40,22 @@ Usage: `devid <device_label>`
 Displays the corresponding device id (e.g., sda1) that matches the specified label as reported by `blikid`.
 
 ## dkms-rebuild.sh
-NOTE: This is work-in- progress as of 2025-11-11.
+Usage: `dkms-rebuild [-k <kernel>| --kernel name <kernel>] [-h | --help]`  If the kernel is not specified, it acts upon the current running kernel (`uname -r`).
 
-Usage: `dkms-rebuild`
+*This has be superseded by `dkms-unzstd` but may still be useful.*
 
-Rebuild the DKMS modules for the current kernel.  This was constructed to address an issue manifesting on Ubuntu-based systems as of the 6.8.0-50 and 6.11.0-28 kernels.  The issue is that the DKMS modules are not being built and included in the `initramfs`.  Previously, I'd built and used the `initramfs_nvidia_fix` to address this as it had only manifested with Nvidia modules.  Recently, however, it was happening with other modules (virtuabox).  This script goes through the process of cleaning up the DKSM files for a module version, building it to a specified (current?) version, and then updating initramfs.
+Rebuild the DKMS modules for the current kernel.
+
+This was constructed to address an issue manifesting on Ubuntu-based systems as of the 6.8.0-50 and 6.11.0-28 kernels.  The issue is that the DKMS modules are not being built and included in the `initramfs`.  Previously, I'd built and used the `initramfs_nvidia_fix` to address this as it had only manifested with Nvidia modules.  Recently, however, it was happening with other modules (virtuabox).  This script goes through the process of cleaning up the DKSM files for a module version, building it to a specified (current?) version, and then updating initramfs.
 
 This should be in `/usr/local/sbin` as it is a sysadmin tool.
+
+## dksm-unzstd.sh
+Usage: `dkms-unzstd [<kernel>]`  If the kernel is not specified, it acts upon the current running kernel (`uname -r`).
+
+Uncompress dkms modules and update initramfs.
+
+The final investigation (documented in launchpad [2154307](https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2154307)) concluded the only thing needed as a workround was to uncompress the `*.ko.ztd` and then update initramfs.
 
 ## howlong.sh
 Usage: `howlong <program_name> [<user>]`
@@ -55,6 +64,8 @@ Displays how long any matching process has been running.
 
 ## initramfs_nvidia_fix.sh
 Usage: `sudo initramfs_nvidia_fix <kerneL>`
+
+*This has be superseded by `dkms-unzstd` but may still be useful.*
 
 Sometimes, when a new kernel is received, the nvidia-related DKMS modules are missing or left compressed and the build of `initramfs` fails to include them.  The visual manifestation of this is that logos and graphics displayed by Plymouth during the boot of the OS are based upon the default resolution and will appear distorted or fuzzy or, if they are missing, the login screen comes up a default resolution.
 
