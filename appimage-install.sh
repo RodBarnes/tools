@@ -6,12 +6,15 @@
 
 source /usr/local/lib/display.sh
 
-VERSION="20260521"
+VERSION="20260725"
 
 show_syntax() {
-  echo "Syntax: $(basename $0) <command> <appimage>"
-  echo "Where:  <command> is the name to be used to invoke the program"
-  echo "        <appimage> is the filename (without extension) of the AppImage"
+  echo "Syntax: $(basename $0) <appimage> [command]"
+  echo "Where:  <appimage> is the filename (without extension) of the AppImage"
+  echo "        [command] is the name used to invoke the program; if omitted,"
+  echo "                  it is looked up under /opt from an existing install"
+  echo "                  matching this AppImage's base name (ignoring version"
+  echo "                  numbers)."
   echo "NOTE:   Must be run as sudo."
   exit
 }
@@ -21,7 +24,7 @@ show_syntax() {
 # --------------------
 
 scriptname=$(basename $0)
-if [[ $# < 2 ]]; then
+if [[ $# < 1 ]]; then
   show_syntax
 fi
 
@@ -30,8 +33,8 @@ if [[ "$EUID" = 0 ]]; then
   exit
 fi
 
-command=$1
-filename=$2
+filename=$1
+command=$2
 
 # Strip any extension that may've been provided
 appname=$(basename $filename .AppImage)
@@ -40,6 +43,25 @@ appname=$(basename $filename .AppImage)
 if [ ! -f $filename ]; then
   printx "Unable to locate specified '$filename'"
   exit
+fi
+
+# If no command was supplied, look it up under /opt from an existing
+# install whose AppImage base name matches (numeric/version suffix ignored)
+if [[ -z "$command" ]]; then
+  prefix=$(echo "$appname" | sed -E 's/[0-9].*//')
+  matches=$(find /opt -maxdepth 2 -iname "${prefix}*.AppImage" 2>/dev/null)
+  nmatches=$(echo "$matches" | grep -c .)
+
+  if [[ -z "$matches" ]]; then
+    printx "No existing install found under /opt matching '$prefix*'.\nSupply <command> explicitly for a new install."
+    exit
+  elif [[ "$nmatches" -gt 1 ]]; then
+    printx "Multiple existing installs under /opt match '$prefix*':\n$matches\nSupply <command> explicitly to disambiguate."
+    exit
+  fi
+
+  command=$(basename $(dirname "$matches"))
+  printx "Resolved command to '$command' from existing install."
 fi
 
 # Create the folder, move the AppImage, make it executable, and create the command
